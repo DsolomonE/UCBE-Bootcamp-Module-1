@@ -113,6 +113,7 @@ new_loan = {
     "remaining_months": 12,
     "repayment_interval": "bullet",
     "future_value": 1000,
+
 }
 
 # @TODO: Define a new function that will be used to calculate present value.
@@ -217,10 +218,15 @@ output_path = Path("inexpensive_loans.csv")
 
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
-#as_inex = "inexpensive_loans.csv"
 
-with open('inexpensive_loans.csv', 'w', newline='') as csvfile:
-    csvwriter = csv.writer(csvfile)
-    csvwriter.writerow(header)
-    # for row in loans:
-        # csvwriter.writerow(loans.values())
+def write_to_csv(inexpensive_loans):
+    with open('inexpensive_loans.csv', 'w', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerow(header)
+        csvwriter.writerows(str(inexpensive_loans))
+# print(write_to_csv(inexpensive_loans)) #_csv.Error: iterable expected, not int
+
+    # for row in inexpensive_loans:
+    #     csvwriter.writerows(row)
+
+
